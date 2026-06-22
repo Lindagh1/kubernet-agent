@@ -4,26 +4,10 @@ from typing import Any
 import streamlit as st
 from llama_stack_client import LlamaStackClient
 
-
-LLAMA_STACK_URL = os.getenv(
-    "LLAMA_STACK_URL",
-    "http://agent-llama-stack-service.wksp-user1.svc.cluster.local:8321",
-)
-
-MODEL_NAME = os.getenv(
-    "MODEL_NAME",
-    "maas-vllm-inference-1/qwen3-4b-instruct",
-)
-
-KUBERNETES_MCP_URL = os.getenv(
-    "KUBERNETES_MCP_URL",
-    "http://ocp-mcp-server.lls-demo.svc.cluster.local:8080/mcp",
-)
-
-SLACK_MCP_URL = os.getenv(
-    "SLACK_MCP_URL",
-    "http://slack-mcp-server.lls-demo.svc.cluster.local/mcp",
-)
+LLAMA_STACK_URL = os.environ["LLAMA_STACK_URL"]
+MODEL_NAME = os.environ["MODEL_NAME"]
+KUBERNETES_MCP_URL = os.environ["KUBERNETES_MCP_URL"]
+SLACK_MCP_URL = os.environ["SLACK_MCP_URL"]
 
 
 KUBERNETES_TOOL = {
