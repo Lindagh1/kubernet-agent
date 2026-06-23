@@ -3,11 +3,14 @@ from typing import Any
 
 import streamlit as st
 from llama_stack_client import LlamaStackClient
+from metrics import monitored, start_metrics_server
 
 LLAMA_STACK_URL = os.environ["LLAMA_STACK_URL"]
 MODEL_NAME = os.environ["MODEL_NAME"]
 KUBERNETES_MCP_URL = os.environ["KUBERNETES_MCP_URL"]
 SLACK_MCP_URL = os.environ["SLACK_MCP_URL"]
+
+start_metrics_server()
 
 
 KUBERNETES_TOOL = {
@@ -110,6 +113,7 @@ def build_conversation_prompt(user_prompt: str) -> str:
     return "\n\n".join(formatted_history)
 
 
+@monitored
 def ask_agent(prompt: str) -> tuple[str, list[str]]:
     client = LlamaStackClient(base_url=LLAMA_STACK_URL)
 
