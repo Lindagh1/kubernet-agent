@@ -1,2 +1,3 @@
 llama-stack-client==0.3.5
-streamlitprometheus-client==0.25.0
+streamlit
+prometheus-client==0.25.0
